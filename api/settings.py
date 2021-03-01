@@ -26,7 +26,7 @@ SECRET_KEY = getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = getenv('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['tranquil-spire-14325.herokuapp.com','127.0.0.1']
 
 AUTH_USER_MODEL = 'authentication.User'
 # Application definition

@@ -9,6 +9,8 @@ verify_ssl = true
 djangorestframework = "*"
 psycopg2-binary = "*"
 djangorestframework-simplejwt = "*"
+pytest-django = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.8"

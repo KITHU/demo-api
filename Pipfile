@@ -13,6 +13,7 @@ pytest-django = "*"
 pytest-cov = "*"
 whitenoise = "*"
 gunicorn = "*"
+drf-yasg = "*"
 
 [requires]
 python_version = "3.8"

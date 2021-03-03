@@ -29,7 +29,7 @@ class LoginSerializer(serializers.ModelSerializer):
     tokens = serializers.CharField(read_only=True)
     class Meta:
         model = User 
-        fields = ['email', 'password','username','tokens']
+        fields = ['id','email', 'password','username','tokens']
 
     def validate(self, attr):
         email = attr.get('email', '')
@@ -40,6 +40,7 @@ class LoginSerializer(serializers.ModelSerializer):
         if not user:
             raise AuthenticationFailed('Invalid credentials, try again')
         return {
+            'id':user.id,
             'username':user.username,
             'email':user.email,
             'tokens': user.tokens

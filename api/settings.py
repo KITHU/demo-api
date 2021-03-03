@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'api.src.authentication',
     'api.src.profiles',
+    'api.src.social',
 ]
 
 SWAGGER_SETTINGS = {

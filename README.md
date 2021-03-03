@@ -5,6 +5,38 @@
 ### **API Documentation**
 - Click [here](https://tranquil-spire-14325.herokuapp.com) to view swagger API documentation
 
+- Click [here](https://www.getpostman.com/collections/2c33004f89687cfb7fea)  to view postman API documentation
+
+## **Set Up Development Environment:**
+- Clone the demo-api repo and cd into it:
+  ```
+   https://github.com/KITHU/demo-api.git 
+  ```
+- Install all Dependancies
+  ```
+   pipenv install 
+  ```
+
+- Make a copy of the .env.sample file and rename it to .env and update the variables accordingly
+- Activate a virtual environment:
+  ```
+    pipenv shell
+  ```
+- Apply migrations:
+  ```
+    python manage.py migrate
+
+  ```
+- Run App
+  ```
+    python manage.py runserver
+  ```
+
+- Run Tests
+  ```
+    pytest
+  ```
+
 ## **Endpoints:**
 ### Register
 

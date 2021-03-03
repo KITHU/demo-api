@@ -14,6 +14,8 @@ pytest-cov = "*"
 whitenoise = "*"
 gunicorn = "*"
 drf-yasg = "*"
+google-api-python-client = "*"
+africastalking = "*"
 
 [requires]
 python_version = "3.8"

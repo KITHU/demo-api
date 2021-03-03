@@ -12,6 +12,10 @@ class BaseTest(TestCase):
         self.LOGIN_URL = '/api/v1/auth/login/'
         self.REGISTER_URL = '/api/v1/auth/register/'
         self.CUSTOMER_PROFILES_URL = '/api/v1/profile/'
+        self.ORDERS_LIST_URL='/api/v1/orders/list/'
+        self.ORDERS_RETRIEVE_URL='/api/v1/orders/retrieve/'
+        self.ORDERS_CREATE_URL='/api/v1/orders/create/'
+
 
 
         self.register_data = {

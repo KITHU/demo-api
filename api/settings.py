@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'api.src.authentication',
     'api.src.profiles',
     'api.src.social',
+    'api.src.orders'
 ]
 
 SWAGGER_SETTINGS = {

@@ -24,5 +24,6 @@ urlpatterns = [
     path('api/v1/auth/', include('api.src.authentication.urls')),
     path('api/v1/auth/', include('api.src.social.urls')),
     path('api/v1/', include('api.src.profiles.urls')),
+    path('api/v1/orders/', include('api.src.orders.urls')),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]

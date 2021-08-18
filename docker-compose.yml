@@ -1,4 +1,6 @@
 version: '2.1'
+volumes:
+    postgres_data:
 services:
   database:
     restart: always
@@ -8,7 +10,7 @@ services:
       POSTGRES_PASSWORD: backend
       POSTGRES_DB: postgres
     volumes:
-      - ./adrian:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data/
     ports:
       - "5433:5432"
     expose:

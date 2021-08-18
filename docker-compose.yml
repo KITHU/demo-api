@@ -1,0 +1,38 @@
+version: '2.1'
+services:
+  database:
+    restart: always
+    image: postgres:10.1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: backend
+      POSTGRES_DB: postgres
+    volumes:
+      - ./adrian:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    expose:
+      - "5433"
+  app:
+    restart: always
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    ports:
+      - '8000:8000'
+    volumes:
+      - .:/app
+    env_file: 
+        - .env
+    environment:
+      DATABASE_URI: postgres://postgres:backend@database:5432/adrian
+      DB_USER: postgres
+      DB_PASSWORD: backend
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_NAME: postgres
+    depends_on:
+      - database
+    entrypoint: ["sh","docker/dev.sh"]
+    stdin_open: true
+    tty: true

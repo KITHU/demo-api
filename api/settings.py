@@ -32,7 +32,7 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
 }
 
-ALLOWED_HOSTS = ['tranquil-spire-14325.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['tranquil-spire-14325.herokuapp.com','127.0.0.1','0.0.0.0']
 
 AUTH_USER_MODEL = 'authentication.User'
 # Application definition

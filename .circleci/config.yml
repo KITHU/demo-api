@@ -8,9 +8,9 @@ jobs:
       - image: circleci/postgres:10.6-alpine-ram
         environment:
           DB_NAME: testdb
-          DB_USER: test
-          DB_PASSWORD: 1234
-          DB_HOST: localhost
+          DB_USER: postgres
+          DB_PASSWORD: ""
+          DB_HOST: 0.0.0.0 
           DB_PORT: 5432
     steps:
       - checkout

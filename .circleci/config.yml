@@ -5,6 +5,11 @@ jobs:
   build-and-test: 
     docker:
       - image: cimg/python:3.8
+      - image: circleci/postgres:10.6-alpine-ram
+        environment:
+          DB_NAME: testdb
+          DB_USER: test
+          DB_PASSWORD: 1234
     steps:
       - checkout
       - python/install-packages:

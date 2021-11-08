@@ -4,16 +4,14 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.1 # primary container for the build job
-      - image: circleci/postgres:10.6-alpine-ram # an example of how to specify a service container
+      - image: circleci/python:3.6.1 
+      - image: circleci/postgres:10.6-alpine-ram
         environment:
           POSTGRES_USER: test-user
           POSTGRES_DB: test-db
           POSTGRES_PASSWORD: ""
-      # used to specify where a job's steps run
     working_directory: ~/repo
 
-    # to run specific commands
     steps:
       # checkout is used to check out source code
       - checkout
@@ -32,10 +30,6 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            sudo apt-get update
-            sudo apt-get install python3
-            sudo apt-get install python3-pip
-            sudo python3 -m pip install --upgrade pip
             pip install -r requirements.txt
       # use catch to save time between runs
       # save to cache certain files
@@ -51,6 +45,7 @@ jobs:
             . venv/bin/activate
             pytest
 workflows:
-  sample: 
+  version: 2
+  build:
     jobs:
       - build

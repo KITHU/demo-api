@@ -5,7 +5,7 @@ jobs:
   build-and-test: 
     docker:
       - image: cimg/python:3.8
-      - image: circleci/postgres:10.6-alpine-ram
+      - image: cimg/postgres:12.4
         environment:
            POSTGRES_USER: test-user
            POSTGRES_DB: test-db
@@ -16,7 +16,9 @@ jobs:
           pkg-manager: pip
       - run:
           name: Run tests
-          command: pytest
+          command: |
+            echo "hello james njiruuuuuuuu"
+            echo $POSTGRES_USER
 workflows:
   sample: 
     jobs:

@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  codecov: codecov/codecov@1.1.3
 jobs:
   build:
     docker:
@@ -15,9 +13,7 @@ jobs:
     steps:
       # checkout is used to check out source code
       - checkout
-    
-      # Download and cache dependencies
-      # Download and cache dependencies
+  
       - restore_cache:
           keys:
             - v2-dependencies-{{ checksum "requirements.txt" }}

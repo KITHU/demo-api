@@ -5,7 +5,7 @@ jobs:
   build-and-test: 
     docker:
       - image: cimg/python:3.8
-      - image: cimg/postgres:12.4
+      - image: cimg/postgres:14.0.0
         environment:
            POSTGRES_USER: test-user
            POSTGRES_DB: test-db

@@ -26,6 +26,7 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
+            pip install --upgrade pip
             pip install -r requirements.txt
       # use catch to save time between runs
       # save to cache certain files

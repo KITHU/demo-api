@@ -63,6 +63,7 @@ jobs:
       - deploy:
           name: Staging Deployment
           command: |
+              echo ${CIRCLE_BRANCH}
               ssh -o "StrictHostKeyChecking no" ${INSTANCE_USER}@${STAGING_IP_ADDRESS} bash --login -i" \
               cd
               cd demo-api

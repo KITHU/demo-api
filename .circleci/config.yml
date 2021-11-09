@@ -1,0 +1,84 @@
+version: 2.1
+orbs:
+  python: circleci/python@1.0.0
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.8.10
+        environment:
+          DB_USER: root
+          DB_NAME: circle_test
+          DB_PASSWORD: ""
+          DB_PORT: 5432 
+          DB_HOST: localhost
+      #- image: circleci/postgres:10.6-alpine-ram
+      - image: circleci/postgres:9.6.2
+        environment:
+          DB_USER: root
+          DB_NAME: circle_test
+          DB_PASSWORD: ""
+          DB_PORT: 5432
+          DB_HOST: localhost
+    working_directory: ~/repo
+
+    steps:
+      # checkout is used to check out source code
+      - checkout
+  
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "requirements.txt" }}
+            # fallback to using the latest cache if no exact match is found
+            - v2-dependencies-
+
+      - &InstallDependencies
+        run:
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install -r requirements.txt
+      # use catch to save time between runs
+      # save to cache certain files
+      - save_cache:
+            paths:
+              - ./venv
+            key: v2-dependencies-{{ checksum "requirements.txt" }}
+      
+      - run:
+          name: run tests
+          no_output_timeout: 30m
+          command: |
+            . venv/bin/activate
+            pytest
+
+  staging_deploy:
+    docker:
+      - image: circleci/python:3.8.10
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - deploy:
+          name: Staging Deployment
+          command: |
+              echo "started this"
+              ssh -o StrictHostKeyChecking=no ${INSTANCE_USER}@${STAGING_IP_ADDRESS} bash --login -i" \
+              cd
+              echo "login done"
+              cd demo-api
+              echo ${CIRCLE_BRANCH}
+              sudo git fetch ${CIRCLE_BRANCH}
+              #sudo git checkout ${CIRCLE_BRANCH}
+              #sudo git pull origin  ${CIRCLE_BRANCH}
+              # sh scripts/deployment.sh"
+              exit
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+      - staging_deploy:
+          requires:
+            - build

@@ -65,8 +65,8 @@ jobs:
           command: |
               echo "started this"
               ssh -o "StrictHostKeyChecking no" ${INSTANCE_USER}@${STAGING_IP_ADDRESS} bash --login -i" \
-              echo "login done"
               cd
+              echo "login done"
               cd demo-api
               echo ${CIRCLE_BRANCH}
               sudo git fetch ${CIRCLE_BRANCH}

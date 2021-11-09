@@ -64,7 +64,7 @@ jobs:
           name: Staging Deployment
           command: |
               echo "started this"
-              ssh -o "StrictHostKeyChecking no" ${INSTANCE_USER}@${STAGING_IP_ADDRESS} bash --login -i" \
+              ssh -o "StrictHostKeyChecking no" ${INSTANCE_USER}@${STAGING_IP_ADDRESS}
               echo "login done"
               cd
               cd demo-api

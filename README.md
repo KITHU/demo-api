@@ -84,7 +84,7 @@ Example request body:
     "phone_no":"771866678"
 }
 ```
-Authentication required
+Authentication required.
 
 ### Retrieve a customers
 `GET /api/v1/profile/id/`
